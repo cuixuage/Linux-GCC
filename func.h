@@ -11,5 +11,6 @@
 #include <sys/select.h>
 #include <sys/time.h>
 #include <sys/mman.h>
-#include <sys/types.h>                                                              
+#include <sys/types.h>
+#include <sys/wait.h>                                                              
 
