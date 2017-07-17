@@ -27,14 +27,14 @@ sheget创建共享内存、或者私有共享内存,fork父子进程并发执行
 线程的互斥锁保护共享区资源,创建一个结构体包括需要保护资源、mutex互斥锁。子线程共享父进程资源   
 **14.mutex_add_tickets.c**  
 线程的互斥锁保护代码区域段,仔细考虑需要保护的位置    
-**15.cond_join_wait.c**  
+**15.cond_join_wait.c**    
 cond条件变量,pthread_cond_wait阻塞(上下文相连处注意加锁),pthread_cond_signal激发条件变量,完成同步机制   
-**16.tcp_server_client.c**    
-server = socket描述符  bind绑定ip+端口号  listen打开端口   accpet阻塞等待client连接  client = socket描述符  connect连接serverip+端口号 server client 使用send recv 通信  
-**17.tcp_epoll.c**   
-while 1 eopll持续监听socket,能够使server不断持续监听。当client重新连接能被监听
-**18.udp_server_client.c**  
-udp server、client通信 server只能先recivefrom client
-**19.encrypt.c**  
-SHA-512 加密,crypt(password,salt) salt盐值使用 $6$拼接8位随机字符构成
+**16.tcp_server_client.c**       
+server = socket描述符  bind绑定ip+端口号  listen打开端口   accpet阻塞等待client连接  client = socket描述符  connect连接serverip+端口号 server client 使用send recv 通信    
+**17.tcp_epoll.c**     
+while 1 eopll持续监听socket,能够使server不断持续监听。当client重新连接能被监听   
+**18.udp_server_client.c**    
+udp server、client通信 server只能先recivefrom client   
+**19.encrypt.c**    
+SHA-512 加密,crypt(password,salt) salt盐值使用 $6$拼接8位随机字符构成   
  
