@@ -1,0 +1,36 @@
+1.判断比较的标志
+Logical Flag				Meaning	Usage
+-gt	Greater Than			[[ $planets -gt 8 ]]
+-ge	Greater Than or Equal To	[[ $votes -ge 270 ]]
+-eq	Equal				[[ $fingers -eq 10 ]]
+-ne	Not Equal			[[ $pages -ne 0 ]]
+-le	Less Than or Equal To		[[ $candles -le 9 ]]
+-lt	Less Than			[[ $wives -lt 2 ]]
+-e	A File Exists			[[ -e $taxes_2016 ]]
+-d	A Directory Exists		[[ -d $photos ]]
+-z	Length of String is Zero	[[ -z $name ]]
+-n	Length of String is Non-Zero	[[ -n $name ]]
+
+
+2.特别注意 =~ 可以使用正则表达式
+
+=~	Matches Regular Expression	[[ $consonants =~ [aeiou] ]]
+=	String Equal To			[[ $password = "pegasus" ]]
+!=	String Not Equal To		[[ $fruit != "banana" ]]
+!	Not				[[ ! "apple" =~ ^b ]]
+
+
+思考&&  ||  Lazy compare*********************不一定会从头执行到末尾
+举例：
+[[ rhythms =~ [aeiou] ]] && echo t || echo f
+
+my_name=sean
+
+[[ $my_name =~ ^s.+n$ ]] && echo t || echo f
+
+
+
+output:
+## f
+
+## t

@@ -1,0 +1,31 @@
+https://www.coursera.org/learn/unix/supplement/QHkCj/braces-exercise
+4.brace 举例:
+http://www.thegeekstuff.com/2010/06/bash-shell-brace-expansion/
+$ cat var_seq.sh
+# Print 1 to 4 using sequences.
+for i in {1..4}
+do
+        echo $i
+done
+start=1
+end=4
+
+# Print 1 to 4 using through variables
+echo "Sequences expressed using variables"
+for i in {$start..$end}
+do
+        echo $i
+done
+
+**********************output：
+$ ./var_seq.sh
+1
+2
+3
+4
+Sequences expressed using variables
+{1..4}
+
+5.**************************************使用brace 创建100个文件
+echo {1..4}.txt  | xargs touch
+touch {1..100}.log 

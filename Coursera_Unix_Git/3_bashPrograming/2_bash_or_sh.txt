@@ -1,0 +1,6 @@
+#!/bin/bash
+   
+这种bash执行解释脚本 if [[ ]];then 能够识别 [[ 符号
+同时执行时改为  bash filename.sh
+
+而使用sh则无法识别[[ 符号
