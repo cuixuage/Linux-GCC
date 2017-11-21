@@ -1,0 +1,27 @@
+branch conflict
+
+如何解决?
+
+1.制造conflict文件
+在master dev分支修改了同一文件 并且各自commit过后 ;
+git checkout master
+git merge dev
+会出现fail 由于conflict的存在
+
+2.cat 查看冲突位置
+此时对于conflict文件 cat查看 发现:
+例如:
+<<<<<<< HEAD
+master fot test
+and for merge conflict
+=======
+dev for branch
+>>>>>>> dev
+
+注释:
+<<<<<<< HEAD和=======之间的行显示当前分支上冲突的行的版本。在Git术语中，HEAD表示当前检出的分支上最近的提交（在这种情况下，它是主）。=======和>>>>>>> update-readme之间的行显示update-readme分支上的行的版本
+
+
+3.重新add commit merge
+重新add修改过的文件 再commit -m "resloved conflict"
+git merge dev即可
