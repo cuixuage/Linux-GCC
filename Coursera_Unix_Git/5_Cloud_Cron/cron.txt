@@ -1,0 +1,31 @@
+我们来看看cron表格的布局。首先，你应该注意到，在符号（#）之后的任何文本都是注释，所以它不会被看到cron（就像bash注释一样）。该cron表有六列：
+
+分钟（m）
+小时（h）
+（dom）日
+月（mon）
+（dow）周
+要运行的命令（command）
+每列由表中的一个空格分隔。前五列允许您指定何时运行特定的命令。每列中只有某些值是有效的：
+
+分钟:( 00 - 59每小时一分钟）
+小时：00 - 23（0是午夜小时）
+本月日：01 - 31（1是本月的第一天）
+月份：01 - 12（1 月份是1月份）
+星期几0 - 6（星期日0）
+
+# m h  dom mon dow   command
+00 * * * * bash /path/to/script.sh     # Runs every hour at the start of the hour
+00 12 * * * bash /path/to/script.sh    # Runs every day at noon
+* 12 * * * bash /path/to/script.sh     # Runs every minute between 12pm and 12:59pm
+00 00 05 * * bash /path/to/script.sh   # Runs the 5th day of every month at midnight
+00 00 * 07 * bash /path/to/script.sh   # Runs every day in the month of July at midnight
+00 00 * * 2 bash /path/to/script.sh    # Runs every Tuesday at midnight
+
+# m h  dom mon dow   command
+00-04 * * * * bash /path/to/script.sh       # Runs every minute for the first five minutes of every hour
+00 00 * * 0,6 bash /path/to/script.sh       # Runs at midnight every Saturday and Sunday
+00 03 01-15 * * bash /path/to/script.sh     # Runs at 3am for the first fifteen days of every month 
+00,30 * * * * bash /path/to/script.sh       # Runs at the start and middle of every hour
+00 00,12 * * * bash /path/to/script.sh      # Runs every day at midnight and noon
+00 * 01-07 01,06 * bash /path/to/script.sh  # Runs at the start of every hour for the first seven days of the months o
