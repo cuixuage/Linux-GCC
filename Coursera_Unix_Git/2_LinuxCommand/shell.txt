@@ -44,4 +44,6 @@ make
 
 make clean
 
-6.echo -n
+6.echo -n  后面不换行输出
+
+7.ps -A 显示所有在运行的应用程序
