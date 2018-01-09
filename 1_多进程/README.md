@@ -19,3 +19,15 @@ mkfifo xxx
 
 2.有名管道 fifo
 open(filename,O_WRONLY)和open(filename,O_RDONLY).再通过得到的文件描述符加以write(int fd,char*,size_t),read(int fd,char*,size_t)
+
+三.共享内存 ipcs与ipcrm命令
+int shmget(key_t key, int size, int shmflg);
+void *shmat(int shmid, const void *shmaddr, int shmflg);//得到指向共享内存的首地址,可以memcpy写入和
+int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+
+四.信号量   
+int semget(key_t key,int nsems,int flag);   
+int semop(int semid,struct sembuf *sops,size_t num_sops);//sops是sembuf结构体指针，代表p v操作   
+semctl(int semid,int 编号,cmd,...) //cmd可以是删除、getval、setvall、setall等等   
+例如:共享内存+互斥信号量的求和 sem_add_10000.c  
+生产者消费者 =》两个信号量: 产品数量+仓库容积 =》都是先p减,再v加 
