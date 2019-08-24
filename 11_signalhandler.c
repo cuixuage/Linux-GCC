@@ -3,16 +3,15 @@
 
 void sig(int signum)
 {
-// Í¬Ò»¸öĞÅºÅÁ¿×î¶àÖ´ĞĞÁ½±é
 	printf("before sleep,I am signal %d\n",signum);
 	sleep(3);
 	printf("after sleep,I am signal %d\n",signum);
 }
 int main()
 {
-	//²¶»ñ2¡¢3ºÅĞÅºÅ£¬¶ÔÓ¦Í¬Ò»¸öhandleº¯Êı
-	signal(SIGINT,sig);
-	signal(SIGQUIT,sig);
+	//æ•è·2ã€3å·ä¿¡å·ï¼Œå¯¹åº”åŒä¸€ä¸ªhandleå‡½æ•°
+	signal(SIGINT,sig); //ctrl+cçš„ç”¨æˆ·ä¿¡å·
+	signal(SIGQUIT,sig);//ctrl+\çš„ç”¨æˆ·ä¿¡å·
 	while(1);
 }
 
