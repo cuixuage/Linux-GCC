@@ -24,6 +24,7 @@ int main(int argc,char* argv[])
 	}
 	int* p;
 	p=(int*)shmat(shmid,NULL,0);		//p指向共享内存  *(p+1)的内容的修改来实现lock&unlock
+						// 没有丝毫加锁的作用 ？？  思考:
 	if(p==(int*)-1)
 	{
 		perror("shmat");
