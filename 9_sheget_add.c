@@ -23,7 +23,7 @@ int main(int argc,char* argv[])
 		return -1;
 	}
 	int* p;
-	p=(int*)shmat(shmid,NULL,0);
+	p=(int*)shmat(shmid,NULL,0);		//p指向共享内存  *(p+1)的内容的修改来实现lock&unlock
 	if(p==(int*)-1)
 	{
 		perror("shmat");
