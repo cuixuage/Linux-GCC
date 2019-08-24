@@ -1,5 +1,5 @@
-//mutex ±£»¤¶àÏß³ÌµÄÂôÆ±³ÌĞò
-//×¢Òâ lock unlocÎ»ÖÃ  ÒòÎªif(*tickets>0) ÊÇĞèÒª¼ÓËøµÄÓï¾ä
+//mutex ä¿æŠ¤å¤šçº¿ç¨‹çš„å–ç¥¨ç¨‹åº
+//æ³¨æ„ lock unlocä½ç½®  å› ä¸ºif(*tickets>0) æ˜¯éœ€è¦åŠ é”çš„è¯­å¥
 #include "func.h"
 pthread_mutex_t mutex;
 void* salewin2(void *p){
@@ -40,11 +40,11 @@ void* salewin1(void *p){
 
 int main(){
 		pthread_t pthid1, pthid2;
-		int tickets=20;
+		int tickets=20;				//è¿›ç¨‹å˜é‡çº¿ç¨‹å…±äº« + çº¿ç¨‹å‚æ•°ä¼ é€’å¼•ç”¨(ä¿®æ”¹æ—¶éœ€è¦åŠ é”)
 		pthread_mutex_init(&mutex,NULL);
 		pthread_create(&pthid1,NULL,salewin1,&tickets);
 		pthread_create(&pthid2,NULL,salewin2,&tickets);
-		// ²»ĞèÒªjoinµÄ·µ»ØÖµ
+		// ä¸éœ€è¦joinçš„è¿”å›å€¼
 		pthread_join(pthid1,NULL);
 		pthread_join(pthid2,NULL);
 		printf("over tickets=%d\n",tickets);
