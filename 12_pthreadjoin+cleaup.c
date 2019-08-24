@@ -1,4 +1,4 @@
-//create ´«µİ×ÓÏß³Ì²ÎÊı ÔÙÓÉjoin×èÈû×ÓÏß³Ì»ñÈ¡·µ»ØÖµ
+//create ä¼ é€’å­çº¿ç¨‹å‚æ•° å†ç”±joiné˜»å¡å­çº¿ç¨‹è·å–è¿”å›å€¼
 #include "func.h"
 void* func(void *p){
 		long *p1;
@@ -11,14 +11,14 @@ void* func(void *p){
 int main(){
 		pthread_t pthid;
 		long i=1;
-		pthread_create(&pthid,NULL,func,&i);
-		pthread_join(pthid,(void**)&i);
+		pthread_create(&pthid,NULL,func,&i);		//ä¼ å‡ºå‚æ•°pidï¼Œä¼ å…¥funcï¼Œä¼ å…¥funcçš„å‚æ•°
+		pthread_join(pthid,(void**)&i);		//ä¼ å…¥å‚æ•°pidï¼Œä¼ å‡ºå‚æ•°:çº¿ç¨‹çš„è¿”å›å€¼
 		printf("final=%ld\n",i);
 }
 
 
 
-//×ÓÏß³Ìread ÊÇcancelnation point ÊÇ»á±»pthread_cancelµô¡£Í¬Ê±»á±»pthread_cleanup ½øĞĞ×ÊÔ´µÄÇåÀí
+//å­çº¿ç¨‹read æ˜¯cancelnation point æ˜¯ä¼šè¢«pthread_cancelæ‰ã€‚åŒæ—¶ä¼šè¢«pthread_cleanup è¿›è¡Œèµ„æºçš„æ¸…ç†
 #include "func.h"
 void cleanup1(void* p)
 {
@@ -33,19 +33,19 @@ void* threadfunc(void *p)
 	printf("child thread,please input something\n");
 	p1=(char*)malloc(20);
 	pthread_cleanup_push(cleanup1,p1);
-	read(0,p1,sizeof(p1));    //ÕâÀï±»cancelµô£¬ºóÃæÎŞ·¨±»Ö´ĞĞ
-    //ÒµÎñÂß¼­
+	read(0,p1,sizeof(p1));    //è¿™é‡Œè¢«cancelæ‰ï¼Œåé¢æ— æ³•è¢«æ‰§è¡Œ
+    //ä¸šåŠ¡é€»è¾‘
 	pthread_exit((void*)5);
 	pthread_cleanup_pop(1);
 	printf("see me?\n");
 }
-//×ÓÏß³Ì±»cancel,Ö÷Ïß³Ì»ØÊÕ×ÓÏß³Ì×ÊÔ´
+//å­çº¿ç¨‹è¢«cancel,ä¸»çº¿ç¨‹å›æ”¶å­çº¿ç¨‹èµ„æº
 int main()
 {
 	pthread_t pthid;
 	int ret;
 	ret=pthread_create(&pthid,NULL,threadfunc,NULL);
-    sleep(1);   //±£Ö¤×ÓÏß³ÌÒÑ¾­´´½¨
+    sleep(1);   //ä¿è¯å­çº¿ç¨‹å·²ç»åˆ›å»º
 	ret=pthread_cancel(pthid);	
 	long l=0;
 	pthread_join(pthid,(void**)&l);
